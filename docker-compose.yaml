@@ -1,0 +1,29 @@
+name: "nodejs-order-app"
+services:
+  nodejs-order-ui:
+    image: registry.cn-shenzhen.aliyuncs.com/cnmirror/nodejs-order-ui:v1.0
+    container_name: nodejs-order-ui
+    ports:
+      - "8080:80"
+    networks:
+      - nodejs-order-net
+
+  nodejs-order-service:
+    image: registry.cn-shenzhen.aliyuncs.com/cnmirror/nodejs-order-service:v1.0
+    container_name: nodejs-order-service
+    ports:
+      - "3001:3001"
+    networks:
+      - nodejs-order-net
+
+  nodejs-inventory-service:
+    image: registry.cn-shenzhen.aliyuncs.com/cnmirror/nodejs-inventory-service:v1.0
+    container_name: nodejs-inventory-service
+    ports:
+      - "3002:3002"
+    networks:
+      - nodejs-order-net
+
+networks:
+  nodejs-order-net:
+    driver: bridge
