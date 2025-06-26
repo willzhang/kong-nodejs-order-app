@@ -16,11 +16,19 @@ services:
     networks:
       - nodejs-order-net
 
-  nodejs-inventory-service:
+  nodejs-inventory-service1:
     image: registry.cn-shenzhen.aliyuncs.com/cnmirror/nodejs-inventory-service:v1.0
-    container_name: nodejs-inventory-service
+    container_name: nodejs-inventory-service1
     ports:
       - "3002:3002"
+    networks:
+      - nodejs-order-net
+
+  nodejs-inventory-service2:
+    image: registry.cn-shenzhen.aliyuncs.com/cnmirror/nodejs-inventory-service:v1.0
+    container_name: nodejs-inventory-service2
+    ports:
+      - "3003:3002"
     networks:
       - nodejs-order-net
 
